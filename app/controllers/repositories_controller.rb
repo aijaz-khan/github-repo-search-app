@@ -15,7 +15,7 @@ class RepositoriesController < ApplicationController
       render json: { repositories: repositories, total_pages: total_pages }
     rescue StandardError => e
       error_message = "An error occurred: #{e.message}"
-      render json: { error: error_message }, status: :internal_server_error
+      render json: { error: error_message }, status: 422
     end
   end
 
