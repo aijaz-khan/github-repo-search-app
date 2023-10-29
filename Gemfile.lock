@@ -81,6 +81,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -96,9 +97,6 @@ GEM
     irb (1.8.3)
       rdoc
       reline (>= 0.3.8)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     loofah (2.21.4)
@@ -127,6 +125,9 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -167,7 +168,6 @@ GEM
     rake (13.1.0)
     rdoc (6.5.0)
       psych (>= 4.0.0)
-    redis (4.8.1)
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
@@ -215,11 +215,10 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  jbuilder
   jsbundling-rails
+  pry
   puma (~> 5.0)
   rails (~> 7.0.8)
-  redis (~> 4.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
