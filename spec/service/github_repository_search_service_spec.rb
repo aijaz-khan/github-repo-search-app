@@ -1,7 +1,6 @@
-# spec/models/github_repository_search_service_spec.rb
+# frozen_string_literal: true
 
-require 'rails_helper' # Make sure to require the appropriate file if not in a Rails context
-require_relative '../../app/services/github_repository_search_service'
+require 'rails_helper'
 
 RSpec.describe GithubRepositorySearchService do
   let(:service) { described_class.new }
