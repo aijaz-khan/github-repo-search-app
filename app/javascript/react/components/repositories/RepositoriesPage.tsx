@@ -67,21 +67,12 @@ const RepositoriesPage: React.FC = () => {
       const response = await fetch(
         `/repositories?search_term=${searchText}&page=${page}`
       );
-
-      console.log('Tjhsakljdhalkjhdskjashdkjashdlkjahskldjhaslkjdhaskljhdkalsjh')
-      console.log(response)
-      console.log('Tjhsakljdhalkjhdskjashdkjashdlkjahskldjhaslkjdhaskljhdkalsjh')
       if (response.ok) {
         const data = await response.json();
         setRepositories(data.repositories);
         setTotalPages(data.total_pages);
       }
     } catch (error) {
-      console.log(error)
-      console.log(error)
-      console.log(error)
-      console.log(error)
-      console.log(error)
       console.error('Error fetching data: ', error);
     }
     setLoading(false);
