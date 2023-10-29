@@ -60,9 +60,12 @@ const RepositoriesPage: React.FC = () => {
   const [totalPages, setTotalPages] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState('')
+  const [lastValidPage, setLastValidPage] = useState(1)
 
   const handleSearch = async () => {
     setLoading(true);
+    setError('')
     try {
       const response = await fetch(
         `/repositories?search_term=${searchText}&page=${page}`
@@ -71,9 +74,15 @@ const RepositoriesPage: React.FC = () => {
         const data = await response.json();
         setRepositories(data.repositories);
         setTotalPages(data.total_pages);
+        setLastValidPage(page);
+      } else {
+        setError('Error fetching data. Please try again.');
+        setPage(lastValidPage)
       }
     } catch (error) {
       console.error('Error fetching data: ', error);
+      setError('An error occurred while fetching data.');
+      setPage(lastValidPage)
     }
     setLoading(false);
   };
@@ -115,6 +124,11 @@ const RepositoriesPage: React.FC = () => {
         <div className={classes.loading}>
           <CircularProgress color="primary" />
         </div>
+      )}
+      {error && (
+        <Typography variant="body1" color="error">
+          {error}
+        </Typography>
       )}
       {repositories && repositories.length > 0 && !loading && (
         <div className={classes.results}>
